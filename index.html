@@ -3,19 +3,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Сборник Стихов</title>
+    <title>Сборник стихов</title>
     <!-- Подключаем Tailwind CSS через CDN для современного дизайна -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Устанавливаем шрифт Inter и обеспечиваем плавные переходы для всех элементов */
         :root {
-            --accent-color: #3b82f6;
-            --text-color: #1f2937;
+            --accent-color: #38bdf8; /* Более мягкий синий оттенок */
+            --text-color: #374151; /* Нежный темно-серый оттенок */
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
+            background-color: #f9fafb; /* Очень светлый серый фон */
         }
 
         /* Настройка для преформатированного текста в модальном окне */
@@ -46,7 +46,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen p-4 sm:p-8 text-gray-800">
+<body class="bg-gray-50 min-h-screen p-4 sm:p-8 text-gray-700">
 
     <div class="container mx-auto max-w-5xl">
         <h1 class="text-3xl sm:text-4xl font-extrabold text-center mb-6 text-gray-800">
@@ -59,7 +59,7 @@
     </div>
 
     <!-- Модальное окно для отображения полного текста стихотворения -->
-    <div id="modal" class="modal fixed inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-70 z-[100] transition-opacity duration-300">
+    <div id="modal" class="modal fixed inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-60 z-[100] transition-opacity duration-300">
         <div class="modal-card bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 transform transition-transform duration-300 scale-95" role="dialog" aria-modal="true">
             <!-- Кнопка закрытия модального окна -->
             <button id="closeBtn" class="absolute top-3 right-3 p-2 rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors" aria-label="Закрыть">
@@ -826,8 +826,8 @@
                 
                 const button = document.createElement('button');
                 button.textContent = 'Читать';
-                // Классы для кнопки
-                button.className = 'w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg shadow-md transition-colors duration-200';
+                // Классы для кнопки, используем более мягкий синий оттенок
+                button.className = 'w-full bg-sky-500 hover:bg-sky-600 text-white font-medium py-2 px-4 rounded-lg shadow-md transition-colors duration-200';
                 
                 button.onclick = () => openModal(index);
                 
