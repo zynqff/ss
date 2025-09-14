@@ -1,83 +1,79 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Сборник стихов</title>
-    <!-- Подключаем Tailwind CSS через CDN для современного дизайна -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Устанавливаем шрифт Inter и обеспечиваем плавные переходы для всех элементов */
-        :root {
-            --accent-color: #38bdf8; /* Более мягкий синий оттенок */
-            --text-color: #374151; /* Нежный темно-серый оттенок */
-        }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Сборник стихов</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Устанавливаем шрифт Inter и обеспечиваем плавные переходы для всех элементов */
+        :root {
+            --accent-color: #38bdf8; /* Более мягкий синий оттенок */
+            --text-color: #374151; /* Нежный темно-серый оттенок */
+        }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb; /* Очень светлый серый фон */
-        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Очень светлый серый фон */
+        }
 
-        /* Настройка для преформатированного текста в модальном окне */
-        pre.poem {
-            white-space: pre-wrap;
-            line-height: 1.55;
-            font-family: inherit;
-            font-size: 1rem;
-            color: var(--text-color);
-            margin: 0;
-        }
+        /* Настройка для преформатированного текста в модальном окне */
+        pre.poem {
+            white-space: pre-wrap;
+            line-height: 1.55;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-color);
+            margin: 0;
+        }
 
-        /* Настройка модального окна для плавного появления */
-        .modal {
-            transition: opacity 0.3s ease-in-out;
-            opacity: 0;
-            visibility: hidden;
-        }
+        /* Настройка модального окна для плавного появления */
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+        }
 
-        .modal.open {
-            opacity: 1;
-            visibility: visible;
-        }
+        .modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
 
-        /* Настройка прокрутки для модального окна на iOS */
-        .modal-card {
-            -webkit-overflow-scrolling: touch;
-        }
-    </style>
+        /* Настройка прокрутки для модального окна на iOS */
+        .modal-card {
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 min-h-screen p-4 sm:p-8 text-gray-700">
 
-    <div class="container mx-auto max-w-5xl">
-        <h1 class="text-3xl sm:text-4xl font-extrabold text-center mb-6 text-gray-800">
-            Сборник стихов
-        </h1>
+    <div class="container mx-auto max-w-5xl">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-center mb-6 text-gray-800">
+            Сборник стихов
+        </h1>
 
-        <!-- Контейнер для карточек стихов в виде сетки -->
-        <div id="grid" class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        </div>
-    </div>
+                <div id="grid" class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        </div>
+    </div>
 
-    <!-- Модальное окно для отображения полного текста стихотворения -->
-    <div id="modal" class="modal fixed inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-60 z-[100] transition-opacity duration-300">
-        <div class="modal-card bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 transform transition-transform duration-300 scale-95" role="dialog" aria-modal="true">
-            <!-- Кнопка закрытия модального окна -->
-            <button id="closeBtn" class="absolute top-3 right-3 p-2 rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors" aria-label="Закрыть">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-            <h2 id="modalTitle" class="text-xl sm:text-2xl font-bold text-center mb-4 leading-tight"></h2>
-            <pre id="modalText" class="poem text-base text-gray-700 leading-relaxed"></pre>
-        </div>
-    </div>
+        <div id="modal" class="modal fixed inset-0 flex items-center justify-center p-4 bg-gray-900 bg-opacity-60 z-[100] transition-opacity duration-300">
+        <div class="modal-card bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 transform transition-transform duration-300 scale-95" role="dialog" aria-modal="true">
+                        <button id="closeBtn" class="absolute top-3 right-3 p-2 rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors" aria-label="Закрыть">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h2 id="modalTitle" class="text-xl sm:text-2xl font-bold text-center mb-4 leading-tight"></h2>
+            <pre id="modalText" class="poem text-base text-gray-700 leading-relaxed"></pre>
+        </div>
+    </div>
 
-    <script>
-        // Все стихотворения (данные оставлены без изменений)
-        const poems = [
-            {
-                title: "Плач Ярославны (пер. Н. Заболоцкого)",
-                text: `Над широким берегом Дуная,
+    <script>
+        // Все стихотворения (данные оставлены без изменений)
+        const poems = [
+            {
+                title: "Плач Ярославны (пер. Н. Заболоцкого)",
+                text: `Над широким берегом Дуная,
 Над великой Галицкой землей
 Плачет, из Путивля долетая,
 Голос Ярославны молодой:
@@ -141,10 +137,10 @@
 Под ударом грозных половчан
 Жаждою стянуло лук походный,
 Горем переполнило колчан?»`
-            },
-            {
-                title: "К Чаадаеву — А. С. Пушкин",
-                text: `Любви, надежды, тихой славы
+            },
+            {
+                title: "К Чаадаеву — А. С. Пушкин",
+                text: `Любви, надежды, тихой славы
 Недолго нежил нас обман,
 Исчезли юные забавы,
 Как сон, как утренний туман;
@@ -165,10 +161,10 @@
 Россия вспрянет ото сна,
 И на обломках самовластья
 Напишут наши имена!`
-            },
-            {
-                title: "Анчар — А. С. Пушкин",
-                text: `В пустыне чахлой и скупой,
+            },
+            {
+                title: "Анчар — А. С. Пушкин",
+                text: `В пустыне чахлой и скупой,
 На почве, зноем раскаленной,
 Анчар, как грозный часовой,
 Стоит — один во всей вселенной.
@@ -212,10 +208,10 @@
 Свои послушливые стрелы
 И с ними гибель разослал
 К соседям в чуждые пределы.`
-            },
-            {
-                title: "Пророк — А. С. Пушкин",
-                text: `Духовной жаждою томим,
+            },
+            {
+                title: "Пророк — А. С. Пушкин",
+                text: `Духовной жаждою томим,
 В пустыне мрачной я влачился, —
 И шестикрылый серафим
 На перепутье мне явился.
@@ -252,10 +248,10 @@
 
 И, обходя моря и земли,
 Глаголом жги сердца людей».`
-            },
-            {
-                title: "Письмо Онегина — А. С. Пушкин",
-                text: `Предвижу все: вас оскорбит
+            },
+            {
+                title: "Письмо Онегина — А. С. Пушкин",
+                text: `Предвижу все: вас оскорбит
 Печальной тайны объясненье.
 Какое горькое презренье
 Ваш гордый взгляд изобразит!
@@ -314,16 +310,16 @@
 А между тем притворным хладом
 Вооружать и речь и взор,
 Вести спокойный разговор,
-Глядеть на вас веселым взглядом!.. 
+Глядеть на вас веселым взглядом!.. 
 
 Но так и быть: я сам себе
 Противиться не в силах боле;
 Все решено: я в вашей воле
 И предаюсь моей судьбе`
-            },
-            {
-                title: "Смерть Поэта — М. Ю. Лермонтов",
-                text: `Отмщенье, государь, отмщенье!
+            },
+            {
+                title: "Смерть Поэта — М. Ю. Лермонтов",
+                text: `Отмщенье, государь, отмщенье!
 Паду к ногам твоим:
 Будь справедлив и накажи убийцу,
 Чтоб казнь его в позднейшие века
@@ -401,10 +397,10 @@
 Оно вам не поможет вновь,
 И вы не смоете всей вашей черной кровью
 Поэта праведную кровь!`
-            },
-            {
-                title: "Родина — М. Ю. Лермонтов",
-                text: `Люблю отчизну я, но странною любовью!
+            },
+            {
+                title: "Родина — М. Ю. Лермонтов",
+                text: `Люблю отчизну я, но странною любовью!
 Не победит ее рассудок мой.
 Ни слава, купленная кровью,
 Ни полный гордого доверия покой,
@@ -430,10 +426,10 @@
 Смотреть до полночи готов
 На пляску с топаньем и свистом
 Под говор пьяных мужичков`
-            },
-            {
-                title: "Пророк — М. Ю. Лермонтов",
-                text: `С тех пор как Вечный Судия
+            },
+            {
+                title: "Пророк — М. Ю. Лермонтов",
+                text: `С тех пор как Вечный Судия
 Мне дал всеведенье пророка,
 В очах людей читаю я
 Страницы злобы и порока.
@@ -461,10 +457,10 @@
 Как он угрюм, и худ, и бледен!
 Смотрите, как он наг и беден,
 Как презирают все его!»`
-            },
-            {
-                title: "Отговорила роща золотая — С. А. Есенин",
-                text: `Отговорила роща золотая
+            },
+            {
+                title: "Отговорила роща золотая — С. А. Есенин",
+                text: `Отговорила роща золотая
 Берёзовым, весёлым языком,
 И журавли, печально пролетая,
 Уж не жалеют больше ни о ком.
@@ -488,10 +484,10 @@
 Сгребёт их все в один ненужный ком…
 Скажите так… что роща золотая
 Отговорила милым языком.`
-            },
-            {
-                title: "Шаганэ ты моя, Шаганэ — С. А. Есенин",
-                text: `Шаганэ ты моя, Шаганэ!
+            },
+            {
+                title: "Шаганэ ты моя, Шаганэ — С. А. Есенин",
+                text: `Шаганэ ты моя, Шаганэ!
 Потому, что я с севера, что ли,
 Я готов рассказать тебе поле,
 Про волнистую рожь при луне.
@@ -516,10 +512,10 @@
 На тебя она страшно похожа,
 Может, думает обо мне…
 Шаганэ ты моя, Шаганэ.`
-            },
-            {
-                title: "Не жалею, не зову, не плачу — С. А. Есенин",
-                text: `Не жалею, не зову, не плачу,
+            },
+            {
+                title: "Не жалею, не зову, не плачу — С. А. Есенин",
+                text: `Не жалею, не зову, не плачу,
 Все пройдет, как с белых яблонь дым.
 Увяданья золотом охваченный,
 Я не буду больше молодым.
@@ -539,10 +535,10 @@
 Тихо льется с кленов листьев медь…
 Будь же ты вовек благословенно,
 Что пришло процвесть и умереть`
-            },
-            {
-                title: "Послушайте! — В. В. Маяковский",
-                text: `Послушайте!
+            },
+            {
+                title: "Послушайте! — В. В. Маяковский",
+                text: `Послушайте!
 Ведь, если звезды зажигают —
 значит — это кому-нибудь нужно?
 Значит — кто-то хочет, чтобы они были?
@@ -572,10 +568,10 @@
 чтобы каждый вечер
 над крышами
 загоралась хоть одна звезда?!`
-            },
-            {
-                title: "Мне нравится, что вы больны не мной — М. И. Цветаева",
-                text: `Мне нравится, что Вы больны не мной,
+            },
+            {
+                title: "Мне нравится, что вы больны не мной — М. И. Цветаева",
+                text: `Мне нравится, что Вы больны не мной,
 Мне нравится, что я больна не Вами,
 Что никогда тяжелый шар земной
 Не уплывет под нашими ногами.
@@ -599,10 +595,10 @@
 За солнце не у нас над головами,
 За то, что Вы больны — увы! — не мной,
 За то, что я больна — увы! — не Вами.`
-            },
-            {
-                title: "Не с теми я, кто бросил землю — А. А. Ахматова",
-                text: `Не с теми я, кто бросил землю
+            },
+            {
+                title: "Не с теми я, кто бросил землю — А. А. Ахматова",
+                text: `Не с теми я, кто бросил землю
 На растерзание врагам.
 Их грубой лести я не внемлю,
 Им песен я своих не дам.
@@ -618,10 +614,10 @@
 Оправдан будет каждый час…
 Но в мире нет людей бесслезней,
 Надменнее и проще нас.`
-            },
-            {
-                title: "Я убит подо Ржевом — А. Т. Твардовский",
-                text: `Я убит подо Ржевом,
+            },
+            {
+                title: "Я убит подо Ржевом — А. Т. Твардовский",
+                text: `Я убит подо Ржевом,
 В безыменном болоте,
 В пятой роте, на левом,
 При жестоком налете.
@@ -801,78 +797,200 @@
 Братья, счастье свое —
 В память воина-брата,
 Что погиб за нее.`
-            }
-        ];
+            },
+            {
+                title: "Властителям и судиям — Гавриил Державин",
+                text: `Восстал всевышний бог, да судит
+Земных богов во сонме их;
+Доколе, рек, доколь вам будет
+Щадить неправедных и злых?
+Ваш долг есть: сохранять законы,
+На лица сильных не взирать,
+Без помощи, без обороны
+Сирот и вдов не оставлять.
+Ваш долг: спасать от бед невинных,
+Несчастливым подать покров;
+От сильных защищать бессильных,
+Исторгнуть бедных из оков.
+Не внемлют! видят — и не знают!
+Покрыты мздою очеса:
+Злодействы землю потрясают,
+Неправда зыблет небеса.
+Цари! Я мнил, вы боги властны,
+Никто над вами не судья,
+Но вы, как я подобно, страстны,
+И так же смертны, как и я.
+И вы подобно так падете,
+Как с древ увядший лист падет!
+И вы подобно так умрете,
+Как ваш последний раб умрет!
+Воскресни, боже! боже правых!
+И их молению внемли:
+Приди, суди, карай лукавых,
+И будь един царем земли!`
+            },
+            {
+                title: "А судьи кто? — А. С. Грибоедов",
+                text: `А судьи кто? — За древностию лет
+К свободной жизни их вражда непримирима,
+Сужденья черпают из забытых газет
+Времен Очаковских и покоренья Крыма[ 3 ];
+Всегда готовые к журьбе,
+Поют все песнь одну и ту же,
+Не замечая об себе:
+Что старее, то хуже.
+Где? укажите нам, отечества отцы,
+Которых мы должны принять за образцы?
+Не эти ли, грабительством богаты?
+Защиту от суда в друзьях нашли, в родстве,
+Великолепные соорудя палаты,
+Где разливаются в пирах и мотовстве,
+И где не воскресят клиенты-иностранцы[ 4 ]
+Прошедшего житья подлейшие черты.
+Да и кому в Москве не зажимали рты
+Обеды, ужины и танцы?
+Не тот ли, вы к кому меня еще с пелён,
+Для замыслов каких-то непонятных,
+Дитёй возили на поклон?
+Тот Нестор[ 5 ] негодяев знатных,
+Толпою окруженный слуг;
+Усердствуя, они в часы вина и драки
+И честь и жизнь его не раз спасали: вдруг
+На них он выменил борзые три собаки!!!
+Или вон тот еще, который для затей
+На крепостный балет согнал на многих фурах
+От матерей, отцов отторженных детей?!
+Сам погружен умом в Зефирах и в Амурах[ 6 ],
+Заставил всю Москву дивиться их красе!
+Но должников не согласил к отсрочке:
+Амуры и Зефиры все
+Распроданы по одиночке!!!
+Вот те, которые дожили до седин!
+Вот уважать кого должны мы на безлюдьи!
+Вот наши строгие ценители и судьи!
+Теперь пускай из нас один,
+Из молодых людей, найдется: враг исканий,
+Не требуя ни мест, ни повышенья в чин,
+В науки он вперит ум, алчущий познаний;
+Или в душе его сам бог возбудит жар
+К искусствам творческим, высоким и прекрасным,—
+Они тотчас: разбой! пожар!
+И прослывет у них мечтателем! опасным!! —
+Мундир! один мундир! он в прежнем их быту
+Когда-то укрывал, расшитый и красивый,
+Их слабодушие, рассудка нищету;
+И нам за ними в путь счастливый!
+И в женах, дочерях к мундиру та же страсть!
+Я сам к нему давно ль от нежности отрекся?!
+Теперь уж в это мне ребячество не впасть;
+Но кто б тогда за всеми не повлекся?
+Когда из гвардии, иные от двора
+Сюда на время приезжали:
+Кричали женщины: ура!
+И в воздух чепчики бросали!`
+            },
+            {
+                title: "О, весна без конца и без краю… — А. А. Блок",
+                text: `О, весна без конца и без краю —
+Без конца и без краю мечта!
+Узнаю тебя, жизнь! Принимаю!
+И приветствую звоном щита!
+Принимаю тебя, неудача,
+И удача, тебе мой привет!
+В заколдованной области плача,
+В тайне смеха — позорного нет!
+Принимаю бессонные споры,
+Утро в завесах темных окна,
+Чтоб мои воспаленные взоры
+Раздражала, пьянила весна!
+Принимаю пустынные веси!
+И колодцы земных городов!
+Осветленный простор поднебесий
+И томления рабьих трудов!
+И встречаю тебя у порога —
+С буйным ветром в змеиных кудрях,
+С неразгаданным именем бога
+На холодных и сжатых губах…
+Перед этой враждующей встречей
+Никогда я не брошу щита…
+Никогда не откроешь ты плечи…
+Но над нами — хмельная мечта!
+И смотрю, и вражду измеряю,
+Ненавидя, кляня и любя:
+За мученья, за гибель — я знаю —
+Всё равно: принимаю тебя!`
+            }
+        ];
 
-        // Получаем ссылки на DOM-элементы
-        const grid = document.getElementById('grid');
-        const modal = document.getElementById('modal');
-        const modalCard = modal.querySelector('.modal-card');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalText = document.getElementById('modalText');
-        const closeBtn = document.getElementById('closeBtn');
+        // Получаем ссылки на DOM-элементы
+        const grid = document.getElementById('grid');
+        const modal = document.getElementById('modal');
+        const modalCard = modal.querySelector('.modal-card');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalText = document.getElementById('modalText');
+        const closeBtn = document.getElementById('closeBtn');
 
-        // Генерируем карточки стихов
-        function renderPoems() {
-            poems.forEach((poem, index) => {
-                const card = document.createElement('div');
-                // Применяем классы Tailwind для красивого вида карточки
-                card.className = 'bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transition-all duration-200 hover:shadow-xl hover:scale-[1.02]';
-                
-                const title = document.createElement('h2');
-                title.textContent = poem.title;
-                // Классы для заголовка
-                title.className = 'text-lg font-semibold mb-4 text-gray-800';
-                
-                const button = document.createElement('button');
-                button.textContent = 'Читать';
-                // Классы для кнопки, используем более мягкий синий оттенок
-                button.className = 'w-full bg-sky-500 hover:bg-sky-600 text-white font-medium py-2 px-4 rounded-lg shadow-md transition-colors duration-200';
-                
-                button.onclick = () => openModal(index);
-                
-                card.appendChild(title);
-                card.appendChild(button);
-                grid.appendChild(card);
-            });
-        }
+        // Генерируем карточки стихов
+        function renderPoems() {
+            poems.forEach((poem, index) => {
+                const card = document.createElement('div');
+                // Применяем классы Tailwind для красивого вида карточки
+                card.className = 'bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transition-all duration-200 hover:shadow-xl hover:scale-[1.02]';
+                
+                const title = document.createElement('h2');
+                title.textContent = poem.title;
+                // Классы для заголовка
+                title.className = 'text-lg font-semibold mb-4 text-gray-800';
+                
+                const button = document.createElement('button');
+                button.textContent = 'Читать';
+                // Классы для кнопки, используем более мягкий синий оттенок
+                button.className = 'w-full bg-sky-500 hover:bg-sky-600 text-white font-medium py-2 px-4 rounded-lg shadow-md transition-colors duration-200';
+                
+                button.onclick = () => openModal(index);
+                
+                card.appendChild(title);
+                card.appendChild(button);
+                grid.appendChild(card);
+            });
+        }
 
-        // Открывает модальное окно
-        function openModal(index) {
-            const poem = poems[index];
-            modalTitle.textContent = poem.title;
-            modalText.textContent = poem.text;
-            
-            // Добавляем класс 'open' для отображения модального окна
-            modal.classList.add('open');
-            modalCard.classList.remove('scale-95'); // Плавное появление
-            document.body.style.overflow = 'hidden'; // Запрещаем прокрутку
-        }
+        // Открывает модальное окно
+        function openModal(index) {
+            const poem = poems[index];
+            modalTitle.textContent = poem.title;
+            modalText.textContent = poem.text;
+            
+            // Добавляем класс 'open' для отображения модального окна
+            modal.classList.add('open');
+            modalCard.classList.remove('scale-95'); // Плавное появление
+            document.body.style.overflow = 'hidden'; // Запрещаем прокрутку
+        }
 
-        // Закрывает модальное окно
-        function closeModal() {
-            modal.classList.remove('open');
-            modalCard.classList.add('scale-95'); // Возвращаем масштаб
-            document.body.style.overflow = ''; // Разрешаем прокрутку
-        }
+        // Закрывает модальное окно
+        function closeModal() {
+            modal.classList.remove('open');
+            modalCard.classList.add('scale-95'); // Возвращаем масштаб
+            document.body.style.overflow = ''; // Разрешаем прокрутку
+        }
 
-        // Добавляем обработчики событий
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (event) => {
-            // Закрываем модальное окно, если клик был вне его
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
-        document.addEventListener('keydown', (event) => {
-            // Закрываем модальное окно по нажатию на ESC
-            if (event.key === 'Escape' && modal.classList.contains('open')) {
-                closeModal();
-            }
-        });
+        // Добавляем обработчики событий
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (event) => {
+            // Закрываем модальное окно, если клик был вне его
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+        document.addEventListener('keydown', (event) => {
+            // Закрываем модальное окно по нажатию на ESC
+            if (event.key === 'Escape' && modal.classList.contains('open')) {
+                closeModal();
+            }
+        });
 
-        // Запускаем генерацию карточек после загрузки страницы
-        window.onload = renderPoems;
-    </script>
+        // Запускаем генерацию карточек после загрузки страницы
+        window.onload = renderPoems;
+    </script>
 </body>
 </html>
